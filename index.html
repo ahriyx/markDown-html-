@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      background: #000;
+      font-family: Georgia, Palatino, serif;
+      color: #EEE;
+      line-height: 1;
+      padding: 30px;
+      margin: auto;
+      max-width: 42em;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-weight: 400;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p {
+      margin-bottom: 24px;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 48px;
+    }
+
+    h2 {
+      font-size: 36px;
+      margin: 24px 0 6px;
+    }
+
+    h3 {
+      font-size: 24px;
+    }
+
+    h4 {
+      font-size: 21px;
+    }
+
+    h5 {
+      font-size: 18px;
+    }
+
+    a {
+      color: #61BFC1;
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      vertical-align: baseline;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: #466B6C;
+    }
+
+    ul,
+    ol {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      line-height: 24px;
+    }
+
+    li ul,
+    li ul {
+      margin-left: 24px;
+    }
+
+    p,
+    ul,
+    ol {
+      font-size: 16px;
+      line-height: 24px;
+      max-width: 540px;
+    }
+
+    pre {
+      padding: 0px 24px;
+      max-width: 800px;
+      white-space: pre-wrap;
+    }
+
+    code {
+      font-family: Consolas, Monaco, Andale Mono, monospace;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+
+    aside {
+      display: block;
+      float: right;
+      width: 390px;
+    }
+
+    blockquote {
+      border-left: .5em solid #eee;
+      padding: 0 2em;
+      margin-left: 0;
+      max-width: 476px;
+    }
+
+    blockquote cite {
+      font-size: 14px;
+      line-height: 20px;
+      color: #bfbfbf;
+    }
+
+    blockquote cite:before {
+      content: '\2014 \00A0';
+    }
+
+    blockquote p {
+      color: #666;
+      max-width: 460px;
+    }
+
+    hr {
+      width: 540px;
+      text-align: left;
+      margin: 0 auto 0 0;
+      color: #999;
+    }
+    /* Code below this line is copyright Twitter Inc. */
+
+    button,
+    input,
+    select,
+    textarea {
+      font-size: 100%;
+      margin: 0;
+      vertical-align: baseline;
+      *vertical-align: middle;
+    }
+
+    button,
+    input {
+      line-height: normal;
+      *overflow: visible;
+    }
+
+    button::-moz-focus-inner,
+    input::-moz-focus-inner {
+      border: 0;
+      padding: 0;
+    }
+
+    button,
+    input[type="button"],
+    input[type="reset"],
+    input[type="submit"] {
+      cursor: pointer;
+      -webkit-appearance: button;
+    }
+
+    input[type=checkbox],
+    input[type=radio] {
+      cursor: pointer;
+    }
+    /* override default chrome & firefox settings */
+
+    input:not([type="image"]),
+    textarea {
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+    }
+
+    input[type="search"] {
+      -webkit-appearance: textfield;
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+    }
+
+    input[type="search"]::-webkit-search-decoration {
+      -webkit-appearance: none;
+    }
+
+    label,
+    input,
+    select,
+    textarea {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: normal;
+      line-height: normal;
+      margin-bottom: 18px;
+    }
+
+    input[type=checkbox],
+    input[type=radio] {
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+
+    input[type=text],
+    input[type=password],
+    textarea,
+    select {
+      display: inline-block;
+      width: 210px;
+      padding: 4px;
+      font-size: 13px;
+      font-weight: normal;
+      line-height: 18px;
+      height: 18px;
+      color: #808080;
+      border: 1px solid #ccc;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+    }
+
+    select,
+    input[type=file] {
+      height: 27px;
+      line-height: 27px;
+    }
+
+    textarea {
+      height: auto;
+    }
+    /* grey out placeholders */
+
+    :-moz-placeholder {
+      color: #bfbfbf;
+    }
+
+    ::-webkit-input-placeholder {
+      color: #bfbfbf;
+    }
+
+    input[type=text],
+    input[type=password],
+    select,
+    textarea {
+      -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+      -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+      transition: border linear 0.2s, box-shadow linear 0.2s;
+      -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type=text]:focus,
+    input[type=password]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: rgba(82, 168, 236, 0.8);
+      -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+      -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+    }
+    /* buttons */
+
+    button {
+      display: inline-block;
+      padding: 4px 14px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      line-height: 18px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+      -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+      background-color: #0064cd;
+      background-repeat: repeat-x;
+      background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+      background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+      background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+      background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+      background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+      background-image: linear-gradient(top, #049cdb, #0064cd);
+      color: #fff;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+      border: 1px solid #004b9a;
+      border-bottom-color: #003f81;
+      -webkit-transition: 0.1s linear all;
+      -moz-transition: 0.1s linear all;
+      transition: 0.1s linear all;
+      border-color: #0064cd #0064cd #003f81;
+      border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    }
+
+    button:hover {
+      color: #fff;
+      background-position: 0 -15px;
+      text-decoration: none;
+    }
+
+    button:active {
+      -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+      -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+      box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    button::-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="-">-</h1>
+<p>前端教程&amp;开发模块化/规范化/工程化/优化&amp;工具/调试&amp;值得关注的博客/Git&amp;面试-前端资源汇总</p>
+<p>特意对前端学习资源做一个汇总，方便自己学习查阅参考，和好友们共同进步。</p>
+<p>本以为自己收藏的站点多，可以很快搞定，没想到一入汇总深似海。还有很多不足&amp;遗漏的地方，欢迎补充。有错误的地方，还请斧正...</p>
+<p>有好友反应和斧正，会及时更新，平时业务工作时也会不定期更新...</p>
+<p>##内容精简
+资源这么多，多看看多学习再总结肯定是好的。多读读就算看重了不算浪费时间，毕竟一千个读者就有一千个林黛玉，还有温故而知新，说不定多读一些内容，就发现惊喜了呢。不过，在此也精简一些内容，就1~2项，只供参考。更多内容细看分类</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/20402689">知乎：程序员应该如何注意身体健康？</a></li>
+<li><a href="http://javascript.ruanyifeng.com/">js：JavaScript 标准参考教程</a></li>
+<li><a href="http://bonsaiden.github.io/JavaScript-Garden/zh/">js：JavaScript 秘密花园</a></li>
+<li><a href="http://es6.ruanyifeng.com/#README">Es6：ECMAScript 6入门</a></li>
+<li><a href="http://www.infoq.com/cn/es6-in-depth/">Es6：深入浅出ES6</a></li>
+<li><a href="http://www.phpstudy.net/css3/">css：CSS 参考手册</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML">html:HTML超文本标记语言</a></li>
+<li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/04/30/jQuery-Learn-1.html">jquery：从零开始学习jQuery</a></li>
+<li><a href="http://web.jobbole.com/84028/">jquery：前端开发者都应知道的 jQuery 小技巧</a></li>
+<li><a href="https://github.com/AlloyTeam/Mars">移动Web：腾讯移动Web前端知识库</a></li>
+<li><a href="http://www.cnblogs.com/PeunZhang/p/3407453.html">移动Web：移动web知识资料集-白树</a></li>
+<li><a href="https://segmentfault.com/a/1190000006995672">小程序：微信小程序开发资源汇总...</a></li>
+<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Git：Git教程 - 廖雪峰</a></li>
+<li><a href="https://segmentfault.com/a/1190000005945614">Git：设置Git快捷命令</a></li>
+<li><a href="https://hulufei.gitbooks.io/react-tutorial/content/index.html">React：React入门教程</a></li>
+<li><a href="http://blog.aijc.net/AngularLearning/">Angular: Angular.js 的一些学习资源</a></li>
+<li><a href="http://www.css88.com/doc/underscore/">underscore：underscore.js 手册</a></li>
+<li><a href="http://cn.vuejs.org/api/">vue：vue.js API 中文</a></li>
+<li><a href="http://es6.ruanyifeng.com/#docs/regex">RegExp：RegExp对象 - 阮一峰</a></li>
+<li><a href="https://github.com/alsotang/node-lessons">Node：Node.js 包教不包会</a></li>
+<li><a href="http://www.expressjs.com.cn/4x/api.html">Express：Express 4.x API 中文手册</a></li>
+<li><a href="http://javascript.ruanyifeng.com/nodejs/koa.html">Koa：Koa 框架学习</a></li>
+<li><a href="https://github.com/icepy/Front-End-Develop-Guide">前端：Front-End-Develop-Guide 前端开发指南</a></li>
+<li><a href="http://blog.chinaunix.net/uid-26672038-id-4112229.html">模块化：JavaSript模块规范 - AMD规范与CMD规范介绍</a></li>
+<li><a href="http://alloyteam.github.io/CodeGuide/">规范化：通过分析github代码库总结出来的工程师代码书写习惯</a></li>
+<li><a href="https://github.com/fouber/blog/issues/10?from=timeline&amp;isappinstalled=0#">工程化：前端工程——基础篇</a></li>
+<li><a href="http://taobaofed.org/">博客：淘宝前端团队</a></li>
+<li><a href="http://alloyteam.github.io/">博客：Tencent AlloyTeam</a></li>
+<li><a href="http://fex.baidu.com/">博客：FEX 百度WEB前端研发部</a></li>
+<li><a href="https://github.com/jikeytang/sublime-text">工具：sublime-text &amp; 资料齐聚</a></li>
+<li><a href="http://frontenddev.org/link/15-tips-of-chrome-developer-tools.html">工具：chrome 开发者工具的 15 个小技巧</a></li>
+<li><a href="http://isux.tencent.com/h5-performance.html">优化：移动H5前端性能优化指南</a></li>
+<li><a href="https://github.com/markyun/My-blog/blob/master/Front-end-Developer-Questions/Questions-and-Answers/README.md">面试：前端开发面试题</a></li>
+</ul>
+<p>##前端资源教程类
+各种教程会有很多，我也精简的挑选了一些。选择一两个合适的就好了。有时间多看看多比比也是极好的。</p>
+<p>###JavaScript</p>
+<ul>
+<li><a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000">Javascript教程-小白的零基础JavaScript全栈教程-瘳雪峰</a></li>
+<li><a href="http://javascript.ruanyifeng.com/">JavaScript 标准参考教程</a></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS">You-Dont-Know-JS -- 不建议初学者查看</a></li>
+<li><a href="http://www.jianshu.com/users/4801d203ede4/latest_articles">You-Dont-Know-JS -- 翻译版</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript">重新介绍 JavaScript（JS 教程）</a></li>
+<li><a href="http://www.cnblogs.com/jikey/p/3613082.html">前端入门教程</a></li>
+<li><a href="https://dwqs.gitbooks.io/frontenddevhandbook/content/">前端开发者手册</a></li>
+<li><a href="https://segmentfault.com/blog/trigkit4?tag=javascript">JavaScript学习总结-trigkit4</a></li>
+<li><a href="https://segmentfault.com/bookmark/1230000007074841">温故js系列-对知识点进行回顾知新</a></li>
+<li><a href="https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html">JS函数式编程指南</a></li>
+<li><a href="http://liubin.github.io/promises-book/">JavaScript Promise迷你书（中文版）</a></li>
+<li><a href="http://study.163.com/course/introduction/224014.htm#/courseDetail">精通JavaScript开发-智能社</a></li>
+<li><a href="http://bonsaiden.github.io/JavaScript-Garden/zh/">JavaScript秘密花园</a></li>
+<li><a href="https://github.com/jobbole/awesome-javascript-cn">JavaScript 资源大全中文版</a></li>
+<li><a href="https://github.com/stone0090/javascript-lessons">JavaScript闯关记 - 编辑中</a></li>
+<li><a href="http://www.lixuejiang.me/2016/11/01/JavaScript%E7%9A%84%E7%BB%83%E4%B9%A0%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/">JavaScript练习网站收集</a></li>
+<li><a href="http://www.w3cfuns.com/notes/17398/d3f6dd40e2d3ff15b209810dfa98be0b.html">统一回复《怎么学JavaScript？》</a></li>
+<li><a href="http://runjs.cn/">runjs - js在线编辑学习</a></li>
+<li><a href="http://web.jobbole.com/29454/">常用的Javascript设计模式</a></li>
+<li><a href="http://web.jobbole.com/54495/">45个实用的JavaScript技巧、窍门和最佳实践</a></li>
+<li><a href="http://web.jobbole.com/53199/">给JavaScript初学者的24条最佳实践</a></li>
+<li><a href="http://web.jobbole.com/31951/">编写快速、高效的JavaScript代码</a></li>
+<li><a href="http://louiszhai.github.io/2016/11/02/ajax/">Ajax知识体系</a></li>
+<li><a href="https://segmentfault.com/a/1190000006735651">javascript功能插件大集合</a></li>
+<li><a href="http://momentjs.com/">Moment.js</a></li>
+<li><a href="http://momentjs.cn/">Moment.js 中文网</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24267683">TypeScript 2.1 新特性一览</a></li>
+<li><a href="http://www.jstips.co/">JS Tips – A JS tip per day!</a></li>
+</ul>
+<p>###ES6</p>
+<ul>
+<li><a href="http://es6.ruanyifeng.com/#README">ECMAScript 6入门</a></li>
+<li><a href="http://www.infoq.com/cn/es6-in-depth/">深入浅出ES6</a></li>
+<li><a href="http://es6-org.github.io/exploring-es6/">探索ES6</a></li>
+<li><a href="http://taobaofed.org/blog/2016/07/22/es6-basics/">ES6 你可能不知道的事 - 基础篇</a></li>
+<li><a href="http://taobaofed.org/blog/2016/11/03/es6-advanced/">ES6 你可能不知道的事 - 进阶篇</a></li>
+</ul>
+<p>###HTML5</p>
+<ul>
+<li>HTML5与CSS3权威指南（书籍）</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML">html:HTML超文本标记语言</a></li>
+<li><a href="https://segmentfault.com/a/1190000007023192">译谷歌 HTML/CSS 规范</a></li>
+<li><a href="http://www.runoob.com/html/html5-intro.html">HTML5菜鸟教程</a></li>
+<li><a href="http://supperjet.github.io/tags/canvas/">《每周一点canvas动画》</a></li>
+<li><a href="http://www.cnblogs.com/tim-li/archive/2012/08/06/2580252.html">玩转html5<canvas>画图</a></li>
+<li><a href="http://www.cnblogs.com/axes/p/3586132.html">HTML5+NodeJs实现WebSocket即时通讯</a></li>
+</ul>
+<p>###CSS3</p>
+<ul>
+<li><a href="http://tympanus.net/codrops/css_reference/">CSS 语法参考</a></li>
+<li><a href="http://www.phpstudy.net/css3/">CSS 参考手册</a></li>
+<li><a href="http://isux.tencent.com/css3/tools.html">腾讯css3动画制作工具</a></li>
+<li><a href="http://www.bootcss.com/">Bootstrap 中文网</a></li>
+<li><a href="http://www.note12.com/category/blog/2014-6-5/538fe0a9f786f1b7019a4dfb">css3 js 移动大杂烩</a></li>
+<li><a href="http://daneden.github.io/animate.css/">Animate.css</a></li>
+<li><a href="http://www.w3cplus.com/sassguide/">Sass guide</a></li>
+<li><a href="http://sass.bootcss.com/">Sass中文文档</a></li>
+<li><a href="http://less.bootcss.com/">less</a></li>
+<li><a href="http://www.cnblogs.com/coco1s/p/5893921.html">谈谈一些有趣的CSS题目系列</a></li>
+<li><a href="http://blog.eamonn.cn/2016/01/28/CSS%E5%B1%85%E4%B8%AD%EF%BC%9A%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%EF%BC%88%E8%AF%91%EF%BC%89/">CSS居中：完全指南（译）</a></li>
+<li><a href="https://segmentfault.com/a/1190000006739376">业务代码中可用的css小技巧</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/23829153">You Don&#39;t Know CSS（一）</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/23856688?refer=c_29157201">You Don&#39;t Know CSS（二）</a></li>
+</ul>
+<p>###jQuery</p>
+<ul>
+<li><a href="http://www.cnblogs.com/zhangziqiu/archive/2009/04/30/jQuery-Learn-1.html">从零开始学习jQuery</a></li>
+<li><a href="http://www.jquery123.com">jQuery API 中文文档</a></li>
+<li><a href="http://learn.jquery.com/">learn JQuery</a></li>
+<li><a href="http://james.padolsey.com/jquery/">JQuery 源码查找</a></li>
+<li><a href="http://web.jobbole.com/84028/">前端开发者都应知道的 jQuery 小技巧</a></li>
+<li><a href="http://web.jobbole.com/21136/">10 个 jQuery 图表插件推荐</a>
+###移动WEB</li>
+<li><a href="https://github.com/AlloyTeam/Mars">腾讯移动Web前端知识库</a></li>
+<li><a href="http://am-team.github.io/amg/dev-exp-doc.html">支付宝-无线Web开发经验谈</a></li>
+<li><a href="http://www.cnblogs.com/PeunZhang/p/3407453.html">移动web知识资料集-白树</a></li>
+<li><a href="https://github.com/jtyjty99999/mobileTech">移动端学习 - mobileTech</a></li>
+<li><a href="http://caibaojian.com/mobile-web-bug.html">移动前端的一些坑和解决方法（外观表现）</a></li>
+<li><a href="https://github.com/imochen/hotcss">hotcss 移动端布局终极解决方案 - 让移动端布局开发更加容易</a></li>
+<li><a href="http://www.css88.com/doc/zeptojs_api/">zepto</a></li>
+<li><a href="http://app-framework-software.intel.com/api.php">jqmobile 手册</a></li>
+<li><a href="http://www.swiper.com.cn/">swiper中文网</a></li>
+<li><a href="https://github.com/cubiq/iscroll">iscroll</a></li>
+<li><a href="https://github.com/hoosin/mobile-web-favorites">移动开发大杂烩</a></li>
+<li><a href="http://framework7.taobao.org/">特色的HTML框架可以创建精美的iOS应用-框架</a></li>
+</ul>
+<p>###微信小程序</p>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000006995672">微信(小程序or应用号)开发资源汇总-文档-工具-教程-代码-插件-组件...</a>
+###Git</li>
+<li><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Git教程 - 廖雪峰</a></li>
+<li><a href="https://github.com/phodal/github-roam">GitHub 漫游指南</a></li>
+<li><a href="https://github.com/xirong/my-git/blob/master/git-workflow-tutorial.md">企业开发git工作流模式探索</a></li>
+<li><a href="https://github.com/xirong/my-git">Git资料</a></li>
+<li><a href="http://www.cnblogs.com/fanfan259/p/4810517.html">Git常用命令</a></li>
+<li><a href="https://segmentfault.com/a/1190000005945614">设置Git快捷命令</a></li>
+</ul>
+<p>###React</p>
+<ul>
+<li><a href="https://discountry.github.io/react/docs/installation.html">React 教程</a></li>
+<li><a href="http://leonshi.com/redux-saga-in-chinese/index.html">Redux-saga 中文文档</a></li>
+<li><a href="https://facebook.github.io/react/docs/getting-started.html">react.js 官方文档</a></li>
+<li><a href="http://reactnative.cn/docs/0.45/getting-started.html">reactnative</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/03/react.html">React 入门实例教程 - 阮一峰</a></li>
+<li><a href="http://wiki.jikexueyuan.com/project/react-native/">React Native 中文版</a></li>
+<li><a href="http://www.infoq.com/cn/articles/react-art-of-simplity/">深入浅出React（一）：React的设计哲学 - 简单之美</a></li>
+<li><a href="http://www.cocoachina.com/webapp/20150721/12692.html">一看就懂的ReactJs入门教程（精华版）</a></li>
+<li><a href="http://react-china.org/">React china 中文社区</a></li>
+<li><a href="http://www.infoq.com/cn/articles/react-art-of-simplity">深入浅出React（系列）</a></li>
+<li><a href="https://github.com/react-guide/react-basic">React 设计思想</a></li>
+<li><a href="https://github.com/dvajs/dva/blob/master/README_zh-CN.md">dva- 基于 redux、redux-saga 和 react-router@2.x 的轻量级前端框架</a></li>
+<li><a href="https://ant.design/docs/spec/introduce-cn">Ant Design of React</a></li>
+<li><a href="https://motion.ant.design/components/tween-one">tween-one 动效组件</a></li>
+</ul>
+<p>###Angularjs</p>
+<ul>
+<li><a href="http://blog.aijc.net/AngularLearning/">Angular.js 的一些学习资源</a></li>
+<li><a href="https://www.zhihu.com/question/21497720">关于 AngularJS 框架的使用有哪些经验值得分享？</a></li>
+<li><a href="http://blog.jobbole.com/46589/">有jQuery背景，该如何用AngularJS编程思想</a></li>
+<li><a href="http://www.cnblogs.com/xuwenmin888/p/3735429.html">AngularJS 源码分析</a></li>
+<li><a href="http://www.angularjs.cn/">AngularJS 中文社区</a></li>
+<li><a href="http://www.ituring.com.cn/minibook/303">AngularJS 入门教程 图灵社区</a></li>
+</ul>
+<p>###函数工具</p>
+<ul>
+<li><a href="http://www.css88.com/doc/underscore/">underscore-underscore.js 手册</a></li>
+<li><a href="http://www.html-js.com/article/Underscorejs-source-code-analysis-of-underscorejs-source-code-analysis%203031">underscore-underscore.js源码分析</a></li>
+<li><a href="https://lodash.com/docs/4.17.4">lodash-官方文档</a></li>
+<li><a href="http://www.css88.com/doc/lodash/">lodash-中文文档</a></li>
+</ul>
+<p>###vue.js</p>
+<ul>
+<li><a href="http://vuejs.org/">vuejs 英文官网</a></li>
+<li><a href="http://cn.vuejs.org/">vuejs 中文官网</a></li>
+<li><a href="http://cn.vuejs.org/api/">vue.js API 中文</a></li>
+<li><a href="http://www.html-js.com/article/user/1152">vue.js 中文入门 - vuejs作者</a></li>
+<li><a href="https://github.com/vuejs/vue">vue github</a></li>
+<li><a href="http://element.eleme.io/#/">Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的组件库</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24865322">vue最新实战 gank客户端（vue2 + vue-router2 + vuex +webpack+ es6）新手福利，干货多多</a></li>
+<li><a href="http://forum.vuejs.org/">Welcome to the Vue Forum!</a></li>
+<li><a href="https://www.iviewui.com/overview/">iView - 一套基于 Vue.js 的高质量 UI 组件库，主要服务于 PC 界面的中后台产品</a></li>
+<li><a href="https://github.com/Coffcer/Blog/issues/3">vue 性能优化</a></li>
+<li><a href="https://gold.xitu.io/post/583d1fe00ce463006baca2fa?utm_source=gold_browser_extension">Vue 2.0 构建单页应用最佳实战</a></li>
+<li><a href="https://segmentfault.com/a/1190000007484936">Vue 2.0源码学习</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24173419">Vue中你不知道但却很实用的黑科技</a></li>
+</ul>
+<p>###正则表达式</p>
+<ul>
+<li><a href="http://javascript.ruanyifeng.com/stdlib/regexp.html">RegExp对象 - 阮一峰</a></li>
+<li><a href="https://segmentfault.com/a/1190000005990323">正则表达式&amp;常用代码</a></li>
+<li><a href="http://louiszhai.github.io/2016/06/13/regexp/">正则表达式前端手册</a></li>
+<li><a href="http://div.io/topic/764?page=1">进阶正则表达式</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions">正则表达式 - MDN</a></li>
+<li><a href="http://es6.ruanyifeng.com/#docs/regex">ES6正则的扩展</a></li>
+<li><a href="http://tool.oschina.net/regex/">在线正则表达式测试</a>
+###NodeJs</li>
+<li>深入浅出NodeJs（推荐书籍）</li>
+<li><a href="https://github.com/alsotang/node-lessons">Node.js 包教不包会</a></li>
+<li><a href="http://nqdeng.github.io/7-days-nodejs/">七天学会NodeJS</a></li>
+<li><a href="http://www.cnblogs.com/zhongweiv/p/nodejs_environment.html">NodeJs学习笔记</a></li>
+<li><a href="http://javascript.ruanyifeng.com/nodejs/basic.html">NodeJs-阮一峰</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/opensource/os-nodejs/">Node.js 究竟是什么？</a></li>
+<li><a href="http://www.barretlee.com/blog/2015/10/07/debug-nodejs-in-command-line/">NodeJs的代码调试和性能调优</a></li>
+<li><a href="http://javascript.ruanyifeng.com/nodejs/express.html">Express 框架学习</a></li>
+<li><a href="http://www.expressjs.com.cn/4x/api.html">Express 4.x API 中文手册</a></li>
+<li><a href="http://javascript.ruanyifeng.com/nodejs/koa.html">Koa 框架学习</a></li>
+<li><a href="http://koa.bootcss.com/">Koa 手册</a></li>
+<li><a href="http://ejs.co/">ejs Embedded JavaScript Template</a></li>
+</ul>
+<p>###简单算法</p>
+<ul>
+<li><a href="https://github.com/Ralph-Wang/algorithm.in.js">数据结构与算法 JavaScript 描述. 章节练习</a></li>
+<li><a href="https://github.com/twobin/twobinSort">常见排序算法（JS版</a></li>
+<li><a href="https://github.com/lightningtgc/JavaScript-Algorithms">JS算法 数据结构 精华集</a></li>
+<li><a href="http://www.cnblogs.com/huangxincheng/archive/2011/11/14/2249046.html">算法系列15天速成——第一天 七大经典排序【上】</a></li>
+<li><a href="https://segmentfault.com/a/1190000005893632">常见排序算法及优化</a>
+###前端综合</li>
+<li><a href="https://github.com/icepy/Front-End-Develop-Guide">Front-End-Develop-Guide 前端开发指南</a></li>
+<li><a href="http://www.cnblogs.com/sb19871023/p/3894452.html">前端知识体系</a></li>
+<li><a href="https://github.com/JacksonTian/fks">前端知识结构</a></li>
+<li><a href="https://github.com/ruanyf/jstraining/blob/master/docs/history.md">前端开发的历史和趋势</a></li>
+<li><a href="http://www.imooc.com/view/506">前端工程师必备的PS技能——切图篇</a></li>
+<li><a href="https://github.com/qiu-deqing/FE-learning">结合个人经历总结的前端入门方法</a></li>
+<li><a href="http://www.w3help.org/zh-cn/home/compatibility.html">w3help</a></li>
+<li><a href="https://github.com/aekaplan/grid">响应式布局指南</a></li>
+<li><a href="https://segmentfault.com/a/1190000000317146">关于前端开发谈谈单元测试</a>
+##前端模块化开发类</li>
+<li><a href="http://blog.chinaunix.net/uid-26672038-id-4112229.html">JavaSript模块规范 - AMD规范与CMD规范介绍</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html">Javascript模块化编程（一）：模块的写法 阮一峰</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html">Javascript模块化编程（二）：AMD规范 阮一峰</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html">Javascript模块化编程（三）：require.js的用法 阮一峰</a></li>
+<li><a href="http://www.cnblogs.com/snandy/archive/2012/05/22/2513652.html">RequireJS入门（一）Snandy</a></li>
+<li><a href="http://www.cnblogs.com/snandy/archive/2012/05/23/2513712.html">RequireJS入门（二）Snandy</a></li>
+<li><a href="http://www.cnblogs.com/snandy/archive/2012/05/24/2514700.html">RequireJS入门（三）Snandy</a></li>
+<li><a href="http://www.cnblogs.com/snandy/archive/2012/06/06/2536969.html">RequireJS进阶（一）Snandy</a></li>
+<li><a href="http://www.cnblogs.com/snandy/archive/2012/06/07/2537477.html">RequireJS进阶（二）Snandy</a></li>
+<li><a href="http://www.cnblogs.com/snandy/archive/2012/06/08/2538001.html">RequireJS进阶（二）Snandy</a></li>
+<li><a href="http://www.oschina.net/translate/getting-started-with-the-requirejs-library">RequireJS 入门指南</a></li>
+<li><a href="http://yslove.net/seajs/">Seajs 提供简单、极致的模块化开发体验</a>
+##前端开发规范类</li>
+<li><a href="http://alloyteam.github.io/CodeGuide/">通过分析github代码库总结出来的工程师代码书写习惯</a></li>
+<li><a href="http://codeguide.bootcss.com">HTML&amp;CSS编码规范 by @mdo</a></li>
+<li><a href="http://yuwenhui.github.io/">Javascript编码规范-Max Yu</a></li>
+<li><a href="http://yuwenhui.github.io/2013/09/13/css-syntax/">CSS编码规范-Max Yu</a></li>
+<li><a href="http://www.cnblogs.com/hustskyking/p/javascript-spec.html">前端编码规范之JavaScript-小胡子哥</a></li>
+<li><a href="%E5%89%8D%E7%AB%AF%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83%E4%B9%8BCSS">前端编码规范之css-小胡子哥</a></li>
+<li><a href="http://zhibimo.com/read/Ashu/front-end-style-guide/">前端开发规范手册</a></li>
+<li><a href="http://blog.jobbole.com/79075/">前端代码规范 及 最佳实践</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/19884834?columnSlug=fuyun">百度前端规范</a></li>
+<li><a href="http://nec.netease.com/standard">网易前端规范</a>
+##前端工程化类
+工程化的工具都不是绝对的，选择合适的使用，项目多了，说不定你都用上了也不一定。反正在我身边我知道的项目中，不同项目用着不同工具，基本都包含了。</li>
+<li><a href="https://github.com/fouber/blog/issues/10?from=timeline&amp;isappinstalled=0#">前端工程——基础篇</a></li>
+<li><a href="http://www.gulpjs.com.cn/">Gulp中文网</a></li>
+<li><a href="http://gulpjs.com/">Gulp官网</a></li>
+<li><a href="http://javascript.ruanyifeng.com/tool/gulp.html">Gulp：任务自动管理工具 - 阮一峰</a></li>
+<li><a href="https://github.com/nimojs/gulp-book">Gulp 入门指南</a></li>
+<li><a href="http://markpop.github.io/2014/09/17/Gulp%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/">Gulp入门教程</a></li>
+<li><a href="http://www.gruntjs.net/">Grunt中文网</a></li>
+<li><a href="http://gruntjs.com/">Grunt官网</a></li>
+<li><a href="http://fex-team.github.io/fis-site/index.html">fis 前端工具框架</a></li>
+<li><a href="http://fis.baidu.com/fis3/docs/beginning/intro.html">fis 文档</a></li>
+<li><a href="http://webpack.github.io/">Webpack</a></li>
+<li><a href="http://webpackdoc.com/">Webpack 中文指南</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/20367175">Webpack傻瓜式指南（一）</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/20397902">Webpack傻瓜指南（二）开发和部署技巧</a></li>
+<li><a href="http://www.jianshu.com/p/42e11515c10f">入门Webpack，看这篇就够了</a></li>
+<li><a href="https://llp0574.github.io/2016/11/29/getting-started-with-webpack2/">Webpack 2 入门教程</a></li>
+</ul>
+<p>##前端开源Git类</p>
+<ul>
+<li><a href="https://code.facebook.com/projects/web/">Facebook Projects</a></li>
+<li><a href="https://github.com/fex-team/">Baidu FEX team</a></li>
+<li><a href="https://github.com/nzakas">nzakas</a></li>
+<li><a href="https://github.com/paulirish">chrome开发团队成员</a></li>
+<li><a href="https://github.com/lifesinger">玉伯 -支付宝前端Leader</a></li>
+<li><a href="https://github.com/kejun">豆瓣前端Leader</a></li>
+<li><a href="https://github.com/JacksonTian">JacksonTian 朴灵</a></li>
+<li><a href="https://github.com/jobbole">伯乐在线</a></li>
+<li><a href="https://github.com/jayli">淘宝UED北京团队</a></li>
+<li><a href="https://github.com/tj">国外TJ大神</a></li>
+<li><a href="https://github.com/substack">substack</a></li>
+<li><a href="https://github.com/fool2fish">支付宝前端美女沉鱼~</a></li>
+<li><a href="https://github.com/fengmk2">fengmk2</a></li>
+<li><a href="https://segmentfault.com/a/1190000002804472">github上值得关注的前端项目 - 404</a></li>
+</ul>
+<p>##前端知名博客类
+SF内有很多高手，可以前去排行榜看看。。。</p>
+<ul>
+<li><a href="http://taobaofed.org/">淘宝前端团队</a></li>
+<li><a href="http://alloyteam.github.io/">Tencent AlloyTeam 2016</a></li>
+<li><a href="http://fex.baidu.com/">FEX 百度WEB前端研发部</a></li>
+<li><a href="http://efe.baidu.com/">EFE 百度EFE(Excellent FrontEnd)技术体系</a></li>
+<li><a href="http://ued.qunar.com/">qunaer UED</a></li>
+<li><a href="https://ruby-china.org/">Ruby-China</a></li>
+<li><a href="https://cnodejs.org/">CNodeJs</a></li>
+<li><a href="https://cnodejs.org/user/i5ting/topics">i5ting狼叔</a></li>
+<li><a href="http://blog.jobbole.com/">伯乐在线</a></li>
+<li><a href="http://www.cnblogs.com/">博客园</a></li>
+<li><a href="http://www.w3cplus.com/">大漠</a></li>
+<li><a href="http://html5ify.com/">朴灵</a></li>
+<li><a href="http://justjavac.com/">justjavac - 迷渡</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/javascript/">阮一峰的网络日志</a></li>
+<li><a href="http://www.cnblogs.com/sanshi/">三生石上-专注于前端（JavaScript、jQuery、ExtJS）</a></li>
+<li><a href="http://www.cnblogs.com/rubylouvre/">司徒正美-Ruby&#39;s Louvre</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/">张鑫旭 - CSSCSSCSS</a></li>
+<li><a href="http://www.cnblogs.com/snandy/">Snandy</a></li>
+</ul>
+<p>##前端开发工具类</p>
+<ul>
+<li><a href="https://github.com/jikeytang/sublime-text">sublime-text &amp; 资料齐聚</a></li>
+<li><a href="https://segmentfault.com/a/1190000006623991">SublimeText-快捷键大全</a></li>
+<li><a href="http://blog.jobbole.com/82527/">Gif多图：我常用的 16 个 Sublime Text 快捷键</a></li>
+<li><a href="http://blog.fens.me/angularjs-webstorm-ide/">AngularJS最理想开发工具WebStorm</a></li>
+<li><a href="http://www.cnblogs.com/tugenhua0707/p/4623317.html">Fiddler调式深入研究(一)</a></li>
+<li><a href="http://www.cnblogs.com/tugenhua0707/p/4637771.html">Fiddler实战深入研究(二)</a></li>
+<li><a href="http://www.cnblogs.com/tugenhua0707/p/4649948.html">移动web调式利器---Rosin研究</a></li>
+<li><a href="http://www.cnblogs.com/strick/p/4570006.html">移动开发中Fiddler的那些事儿</a></li>
+<li><a href="http://gaoboy.com/article/26.html">微信内移动前端开发抓包调试工具fiddler使用教程</a></li>
+<li><a href="https://developer.chrome.com/devtools">Google Chrome 官方</a></li>
+<li><a href="http://www.cnblogs.com/constantince/p/4565261.html">Chrome开发者工具不完全指南（一、基础功能篇）</a></li>
+<li><a href="http://www.cnblogs.com/constantince/p/4579121.html">Chrome开发者工具不完全指南（二、进阶篇）</a></li>
+<li><a href="http://www.cnblogs.com/constantince/p/4585983.html">Chrome开发者工具不完全指南（三、性能篇）</a></li>
+<li><a href="http://www.cnblogs.com/constantince/p/4607497.html">Chrome开发者工具不完全指南（四、性能进阶篇）</a></li>
+<li><a href="http://www.cnblogs.com/constantince/p/4624241.html">Chrome开发者工具不完全指南（五、移动篇）</a></li>
+<li><a href="http://anti-code.com/devtools-cheatsheet/">chrome开发工具快捷键</a></li>
+<li><a href="http://www.iinterest.net/2014/05/09/chrome-dev-tool-workspace/">Chrome 开发工具 Workspace 使用</a></li>
+<li><a href="http://frontenddev.org/link/15-tips-of-chrome-developer-tools.html">chrome 开发者工具的 15 个小技巧</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/22665710">天啦噜！原来Chrome自带的开发者工具还能这么用！</a></li>
+<li><a href="https://segmentfault.com/a/1190000000683599">神器——Chrome开发者工具(一)</a></li>
+<li><a href="http://sentsin.com/web/253.html">使用Chrome开发工具调试Canvas</a></li>
+<li><a href="http://www.imooc.com/learn/137">WEB调试工具---Firebug-慕课网</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Tools/WebIDE">Firefox 开发工具 WebIDE</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2008/06/firebug_tutorial.html">Firebug入门指南 - 阮一峰</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2011/03/firebug_console_tutorial.html">Firebug控制台详解 - 阮一峰</a></li>
+<li><a href="http://yujiangshui.com/multidevice-frontend-debug/">移动端前端开发调试</a></li>
+<li><a href="http://www.jianshu.com/p/ccf124f1f74b">屌爆了,完美调试 微信webview(x5)</a></li>
+<li><a href="http://liyaodong.com/2015/07/06/%E5%BE%AE%E4%BF%A1%E8%B0%83%E8%AF%95%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">微信调试的那些事</a></li>
+<li><a href="http://www.liantu.com/">在线二维码图片生成器</a></li>
+<li><a href="https://tinypng.com/">Smart PNG and JPEG compression在线图片压缩</a></li>
+<li><a href="http://www.easyicon.net/">easyicon 图标下载</a></li>
+<li><a href="http://tympanus.net/Development/IconHoverEffects">Icon Hover Effects</a></li>
+</ul>
+<p>##前端性能优化类</p>
+<ul>
+<li><a href="http://www.infoq.com/cn/articles/javascript-high-performance-animation-and-page-rendering">Javascript高性能动画与页面渲染</a></li>
+<li><a href="http://isux.tencent.com/h5-performance.html">移动H5前端性能优化指南</a></li>
+<li><a href="http://www.uisdc.com/front-end-performance-for-web-designers-and-front-end-developers">给网页设计师和前端开发者看的前端性能优化</a></li>
+<li><a href="http://www.360ito.com/article/40.html">转一篇Yahoo关于网站性能优化的文章，兼谈本站要做的优化</a></li>
+<li><a href="http://www.360doc.com/content/10/0928/09/2588264_56971287.shtml">Yahoo!团队实践分享:网站性能优化的34条黄金守则(一)—内容</a></li>
+<li><a href="http://blog.jiasule.com/i/153">网站性能优化指南：什么使我们的网站变慢？</a></li>
+<li><a href="http://www.gbin1.com/technology/html/20130217-tips-for-speed-up-page-loading/">分享网页加载速度优化的一些技巧</a></li>
+<li><a href="http://www.alloyteam.com/2012/10/high-performance-html/">【高性能前端1】高性能HTML - </a></li>
+<li><a href="http://www.alloyteam.com/2012/10/high-performance-css/">【高性能前端2】高性能CSS</a></li>
+<li><a href="http://www.infoq.com/cn/articles/front-end-engineering-and-performance-optimization-part1">前端工程精粹（一）：静态资源版本更新与缓存</a></li>
+<li><a href="http://www.infoq.com/cn/articles/front-end-engineering-and-performance-optimization-part2">前端工程精粹（二）：静态资源管理与模板框架</a></li>
+<li><a href="https://segmentfault.com/a/1190000000367899">让网站提速的最佳前端实践</a></li>
+<li><a href="https://github.com/amfe/article/issues/1">阿里无线前端性能优化指南 (Pt.1 加载期优化)</a></li>
+<li><a href="https://developers.google.com/speed/pagespeed/insights/">pagespeed - 检测网页性能及优化建议</a>
+##前端面试类
+面试题可以供我们学习补漏，但面试题始终有一种应对面试的感觉。请相信面试官能轻易的看出你的斤两，掌握基础和提升技术才是最重要的。这些面试题也是极好的。</li>
+<li><a href="https://segmentfault.com/a/1190000000465431">前端开发面试题</a></li>
+<li><a href="https://github.com/markyun/My-blog/blob/master/Front-end-Developer-Questions/Questions-and-Answers/README.md">前端开发面试题 - GitHub</a></li>
+<li><a href="https://segmentfault.com/a/1190000004071610">前端开发面试问题及答案整理</a></li>
+<li><a href="https://github.com/hawx1993/Front-end-Interview-questions">front-end development interview questions and answers</a></li>
+<li><a href="http://www.html-js.com/article/Large-search-front-team-column%202961">如何面试一名前端开发工程师？</a></li>
+<li><a href="http://www.cnblogs.com/xiaoruo/p/4665163.html">前端实习生面试总结</a></li>
+<li><a href="https://github.com/paddingme/Front-end-Web-Development-Interview-Question">前端开发面试题大收集</a></li>
+<li><a href="http://www.zhihu.com/question/19568008">如何面试前端工程师？ - 知乎</a></li>
+<li><a href="http://ourjs.com/detail/5%E4%B8%AA%E7%BB%8F%E5%85%B8%E7%9A%84%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98">5个经典的前端面试问题</a></li>
+<li><a href="http://www.admin10000.com/document/6715.html">10个常见的Node.js面试题</a></li>
+<li><a href="https://github.com/fex-team/interview-questions">百度FEX 的面试</a></li>
+<li><a href="http://www.codeceo.com/article/40-important-html5-interviews.html">40 个重要的 HTML5 面试问题及答案</a></li>
+<li><a href="http://blog.jobbole.com/78738/">BAT及各大互联网公司2014前端笔试面试题：JavaScript篇</a></li>
+<li><a href="https://segmentfault.com/a/1190000006921322">TCP三次握手&amp;Render Tree页面渲染=&gt;从输入URL到页面显示的过程</a></li>
+<li><a href="https://segmentfault.com/a/1190000004569460">前端进阶-让你升级的网络知识</a></li>
+</ul>
+
+</body>
+
+</html>
